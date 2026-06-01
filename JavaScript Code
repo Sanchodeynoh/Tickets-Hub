@@ -1,0 +1,39 @@
+let cart = [];
+
+function openEvent(eventId) {
+  document.getElementById('event-modal').classList.remove('hidden');
+}
+
+function closeModal() {
+  document.getElementById('event-modal').classList.add('hidden');
+  // Reset inputs
+  document.querySelectorAll('input[type="number"]').forEach(i => i.value = 0);
+}
+
+function proceedToCheckout() {
+  const inputs = document.querySelectorAll('input[type="number"]');
+  let total = 0;
+  let items = [];
+  
+  inputs.forEach(input => {
+    const qty = parseInt(input.value);
+    if(qty > 0) {
+      const price = parseInt(input.dataset.price);
+      total += qty * price;
+      items.push({qty, price});
+    }
+  });
+  
+  if(total === 0) {
+    alert('Select at least 1 ticket');
+    return;
+  }
+  
+  // Update cart count
+  document.getElementById('cart-count').textContent = items.reduce((a,b) => a + b.qty, 0);
+  
+  // Step 3: This will redirect to QR payment page
+  alert(`Added to cart. Total: $${total}\n\nStep 2: We’ll build the QR payment + checkout form next.`);
+  
+  closeModal();
+}
