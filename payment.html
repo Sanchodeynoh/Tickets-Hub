@@ -503,4 +503,72 @@
       // Buyer info
       document.getElementById('buyerDisplay').innerHTML = `
         <div class="buyer-row"><span class="b-label">Name</span><span class="b-value">${order.buyer.name}</span></div>
-   
+        <div class="buyer-row"><span class="b-label">Email</span><span class="b-value">${order.buyer.email}</span></div>
+        ${order.buyer.phone ? `<div class="buyer-row"><span class="b-label">Phone</span><span class="b-value">${order.buyer.phone}</span></div>` : ''}
+        <div class="buyer-row"><span class="b-label">Country</span><span class="b-value">${order.buyer.country}</span></div>
+      `;
+
+      // Items
+      document.getElementById('orderItemsList').innerHTML = order.items.map(item => `
+        <div class="order-item">
+          <div class="oi-left">
+            <div class="oi-name">${item.artist}</div>
+            <div class="oi-tier">${item.event} · ${item.tier}</div>
+          </div>
+          <div class="oi-right">
+            <div class="oi-price">$${(item.price * item.qty).toLocaleString()}</div>
+            <div class="oi-qty">$${item.price} × ${item.qty}</div>
+          </div>
+        </div>
+      `).join('');
+
+      // Totals
+      document.getElementById('orderTotals').innerHTML = `
+        <div class="ot-row"><span class="ot-l">Subtotal</span><span class="ot-r">$${order.subtotal.toLocaleString()}</span></div>
+        <div class="ot-row"><span class="ot-l">Service fee</span><span class="ot-r">$${order.fee.toLocaleString()}</span></div>
+        ${order.discount > 0 ? `<div class="ot-row"><span class="ot-l">Discount</span><span class="ot-r" style="color:var(--success)">-$${order.discount.toLocaleString()}</span></div>` : ''}
+        <div class="ot-row grand">
+          <span class="ot-l">Total</span>
+          <span class="ot-r">$${order.total.toLocaleString()}</span>
+        </div>
+      `;
+    }
+
+    async function handlePaid() {
+      if (!order) return;
+
+      const btn = document.querySelector('.btn-submit-order');
+      btn.disabled = true;
+      btn.textContent = 'Submitting order...';
+
+      try {
+        // Submit to real backend — triggers email to admin
+        const result = await Orders.submit({
+          items:    order.items,
+          buyer:    order.buyer,
+          subtotal: order.subtotal,
+          fee:      order.fee,
+          discount: order.discount,
+          total:    order.total
+        });
+
+        const finalOrder = { ...order, orderId: result.orderId, status: 'pending', paidAt: new Date().toISOString() };
+
+        // Clear cart
+        Cart.clear();
+        sessionStorage.removeItem('th_pending_order');
+        sessionStorage.removeItem('th_buynow');
+
+        // Go to confirmation
+        sessionStorage.setItem('th_confirmed_order', JSON.stringify(finalOrder));
+        window.location.href = 'confirmation.html';
+
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'I have Paid - Submit My Order';
+        alert('Could not submit order: ' + err.message + '. Please check your connection and try again.');
+      }
+    }
+  </script>
+</body>
+</html>

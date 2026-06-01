@@ -576,4 +576,32 @@
       markField('email', !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
       showErr('countryErr',   !country);   markField('country',   !country);
       showErr('passwordErr',  password.length < 8); markField('password', password.length < 8);
-      showErr('confirmErr',   password !== confirm || !confirm); markField('confirmPassword', password !== confirm |
+      showErr('confirmErr',   password !== confirm || !confirm); markField('confirmPassword', password !== confirm || !confirm);
+      showErr('termsErr',     !terms);
+
+      if (!firstName || !lastName || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+        || !country || password.length < 8 || password !== confirm || !terms) {
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Creating account...';
+
+      try {
+        await Auth.register({ firstName, lastName, email, country, password });
+        document.getElementById('formSection').style.display = 'none';
+        document.getElementById('successScreen').style.display = 'block';
+      } catch (err) {
+        const errBox = document.getElementById('globalError');
+        errBox.textContent = err.message || 'Registration failed. Please try again.';
+        errBox.classList.add('show');
+        btn.disabled = false;
+        btn.textContent = 'Create My Account →';
+      }
+    }
+  </script>
+</body>
+</html>

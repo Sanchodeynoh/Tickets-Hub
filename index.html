@@ -774,4 +774,529 @@
       gap: 3rem;
     }
     .footer-logo {
-   
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+    .footer-logo span { color: var(--purple-glow); }
+    .footer-tagline { font-size: 0.83rem; color: var(--gray-mid); line-height: 1.6; max-width: 260px; }
+    .footer-col h4 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-light);
+      margin-bottom: 1rem;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-links a {
+      font-size: 0.83rem;
+      color: var(--gray-mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--purple-glow); }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 2rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-copy { font-size: 0.75rem; color: var(--gray-mid); }
+    .footer-disclaimer { font-size: 0.7rem; color: rgba(107,114,128,0.6); max-width: 400px; text-align: right; }
+
+    /* ── MOBILE NAV DRAWER ── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: rgba(26,10,46,0.98);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      z-index: 99;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--gray-light);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu .mob-actions {
+      display: flex;
+      gap: 0.75rem;
+      padding-top: 0.5rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 3rem 1.5rem;
+      }
+      .hero-card { max-width: 480px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { display: none; }
+      .btn-login, .btn-register { display: none; }
+      .hamburger { display: flex; }
+
+      .hero-content { padding: 2rem 1.25rem; }
+      .hero-stats { gap: 1.5rem; }
+
+      section { padding: 3.5rem 1.25rem; }
+
+      .events-grid { grid-template-columns: 1fr; }
+
+      .steps-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .step-card { padding: 1.25rem 1rem; }
+
+      .trust-bar { gap: 1.5rem; }
+
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-disclaimer { text-align: left; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 400px) {
+      .steps-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">TICKETS<span>HUB</span></a>
+
+    <ul class="nav-links">
+      <li><a href="#events">Events</a></li>
+      <li><a href="#events">K-Pop</a></li>
+      <li><a href="#events">International</a></li>
+      <li><a href="#how">How It Works</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="cart-btn" aria-label="Shopping cart">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        <span class="cart-count">0</span>
+      </button>
+      <a href="login.html" class="btn-login">Log In</a>
+      <a href="register.html" class="btn-register">Sign Up</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#events">Events</a>
+    <a href="#events">K-Pop</a>
+    <a href="#events">International</a>
+    <a href="#how">How It Works</a>
+    <div class="mob-actions">
+      <a href="login.html" class="btn-login" style="display:inline-block;">Log In</a>
+      <a href="register.html" class="btn-register" style="display:inline-block;">Sign Up</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="hero-content">
+      <div class="hero-left">
+        <div class="hero-badge">🎟️ Presale Tickets Now Available</div>
+        <h1 class="hero-title">
+          YOUR SEAT.<br/>
+          <span class="accent">YOUR MOMENT.</span><br/>
+          <span class="gold">SECURED.</span>
+        </h1>
+        <p class="hero-sub">
+          Exclusive presale access to the biggest K-Pop and international events. 
+          BTS ARIRANG, EXO, The Weeknd — get your tickets before they sell out.
+        </p>
+        <div class="hero-cta">
+          <a href="#events" class="btn-primary">
+            Browse Events
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#how" class="btn-secondary">How It Works</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-num">50K+</div>
+            <div class="stat-label">Tickets Sold</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">12</div>
+            <div class="stat-label">Events Live</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">8</div>
+            <div class="stat-label">Countries</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Event Card -->
+      <div class="hero-card">
+        <div class="card-image-placeholder">
+          <span class="featured-tag">⭐ Featured</span>
+          <span class="presale-tag">🔐 Presale</span>
+          <div class="bts-logo-placeholder">BTS</div>
+        </div>
+        <div class="card-body">
+          <div class="card-artist">BTS</div>
+          <div class="card-event-name">ARIRANG WORLD TOUR 2026</div>
+          <div class="card-meta">
+            <div class="card-meta-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              TBA 2026
+            </div>
+            <div class="card-meta-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Multiple Cities
+            </div>
+          </div>
+          <div class="card-price-row">
+            <div>
+              <div class="price-from">Starting from</div>
+              <div class="price-amount">$120 <span class="price-currency">USD</span></div>
+            </div>
+            <a href="event.html" class="btn-buy-now">Get Tickets →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TICKER -->
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <span class="ticker-item"><span class="ticker-dot">✦</span> BTS ARIRANG PRESALE OPEN</span>
+      <span class="ticker-item"><span class="ticker-dot">✦</span> THE WEEKND WORLD TOUR</span>
+      <span class="ticker-item"><span class="ticker-dot">✦</span> EXO COMEBACK CONCERT</span>
+      <span class="ticker-item"><span class="ticker-dot">✦</span> SECURE YOUR SEAT TODAY</span>
+      <span class="ticker-item"><span class="ticker-dot">✦</span> QR PAYMENT ACCEPTED</span>
+      <span class="ticker-item"><span class="ticker-dot">✦</span> GLOBAL SHIPPING AVAILABLE</span>
+      <!-- duplicate for seamless loop -->
+      <span class="ticker-item"><span class="ticker-dot">✦</span> BTS ARIRANG PRESALE OPEN</span>
+      <span class="ticker-item"><span class="ticker-dot">✦</span> THE WEEKND WORLD TOUR</span>
+      <span class="ticker-item"><span class="ticker-dot">✦</span> EXO COMEBACK CONCERT</span>
+      <span class="ticker-item"><span class="ticker-dot">✦</span> SECURE YOUR SEAT TODAY</span>
+      <span class="ticker-item"><span class="ticker-dot">✦</span> QR PAYMENT ACCEPTED</span>
+      <span class="ticker-item"><span class="ticker-dot">✦</span> GLOBAL SHIPPING AVAILABLE</span>
+    </div>
+  </div>
+
+  <!-- EVENTS SECTION -->
+  <section id="events">
+    <div class="section-header">
+      <div>
+        <div class="section-label">🎵 Live Now</div>
+        <h2 class="section-title">UPCOMING EVENTS</h2>
+      </div>
+      <a href="#events" class="view-all">View All Events →</a>
+    </div>
+
+    <div class="events-grid">
+
+      <!-- BTS Card -->
+      <a href="event.html" class="event-card" style="text-decoration:none;color:inherit;">
+        <div class="event-img bts-bg" style="position:relative;">
+          <div class="event-badge badge-presale">Presale</div>
+          <span style="z-index:1;">BTS</span>
+          <div class="event-img-overlay"></div>
+        </div>
+        <div class="event-info">
+          <div class="event-artist">BTS</div>
+          <div class="event-name">ARIRANG WORLD TOUR 2026</div>
+          <div class="event-details">
+            <div class="event-detail">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Date: TBA 2026
+            </div>
+            <div class="event-detail">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Venue: TBA — Multiple Cities
+            </div>
+            <div class="event-detail">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Presale ends when sold out
+            </div>
+          </div>
+          <div class="event-footer">
+            <div class="ticket-price">
+              <div class="price-label">From</div>
+              <div class="price-value">$120</div>
+            </div>
+            <button class="btn-get">Get Tickets</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- The Weeknd Card -->
+      <a href="event-weeknd.html" class="event-card" style="text-decoration:none;color:inherit;">
+        <div class="event-img weeknd-bg" style="position:relative;">
+          <div class="event-badge badge-hot">🔥 Hot</div>
+          <span style="z-index:1; font-size:2rem; text-align:center; padding: 0 1rem;">THE WEEKND</span>
+          <div class="event-img-overlay"></div>
+        </div>
+        <div class="event-info">
+          <div class="event-artist">THE WEEKND</div>
+          <div class="event-name">HURRY UP TOMORROW WORLD TOUR</div>
+          <div class="event-details">
+            <div class="event-detail">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Date: TBA 2026
+            </div>
+            <div class="event-detail">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Venue: TBA
+            </div>
+            <div class="event-detail">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Limited presale seats
+            </div>
+          </div>
+          <div class="event-footer">
+            <div class="ticket-price">
+              <div class="price-label">From</div>
+              <div class="price-value">$95</div>
+            </div>
+            <button class="btn-get">Get Tickets</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- EXO Card -->
+      <a href="event-exo.html" class="event-card" style="text-decoration:none;color:inherit;">
+        <div class="event-img exo-bg" style="position:relative;">
+          <div class="event-badge badge-new">New</div>
+          <span style="z-index:1;">EXO</span>
+          <div class="event-img-overlay"></div>
+        </div>
+        <div class="event-info">
+          <div class="event-artist">EXO</div>
+          <div class="event-name">COMEBACK CONCERT 2026</div>
+          <div class="event-details">
+            <div class="event-detail">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Date: TBA 2026
+            </div>
+            <div class="event-detail">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Venue: TBA
+            </div>
+            <div class="event-detail">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Early bird pricing available
+            </div>
+          </div>
+          <div class="event-footer">
+            <div class="ticket-price">
+              <div class="price-label">From</div>
+              <div class="price-value">$85</div>
+            </div>
+            <button class="btn-get">Get Tickets</button>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <hr class="section-divider"/>
+
+  <!-- HOW IT WORKS -->
+  <div class="how-section" id="how">
+    <div class="how-inner">
+      <div style="text-align:center; margin-bottom:0.5rem;">
+        <div class="section-label" style="display:inline-block;">Simple &amp; Secure</div>
+      </div>
+      <h2 class="section-title" style="text-align:center; font-size: clamp(2rem,4vw,3rem);">HOW IT WORKS</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-icon">🎟️</div>
+          <div class="step-num">01</div>
+          <div class="step-title">Choose Your Event</div>
+          <div class="step-desc">Browse our presale listings and pick the event and ticket category that works for you.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-icon">🛒</div>
+          <div class="step-num">02</div>
+          <div class="step-title">Add to Cart</div>
+          <div class="step-desc">Select your quantity and ticket tier. Review your order summary before checkout.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-icon">📱</div>
+          <div class="step-num">03</div>
+          <div class="step-title">Pay via QR Code</div>
+          <div class="step-desc">Scan our secure QR code and complete your payment quickly and safely.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-icon">✅</div>
+          <div class="step-num">04</div>
+          <div class="step-title">Get Confirmed</div>
+          <div class="step-desc">We verify your payment and send your ticket confirmation straight to your email.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item"><span class="trust-icon">🔒</span> Secure QR Payments</div>
+    <div class="trust-item"><span class="trust-icon">✉️</span> Email Confirmation</div>
+    <div class="trust-item"><span class="trust-icon">🌏</span> Global Access</div>
+    <div class="trust-item"><span class="trust-icon">⚡</span> Instant Order Processing</div>
+    <div class="trust-item"><span class="trust-icon">🎫</span> Presale Specialists</div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">TICKETS<span>HUB</span></div>
+        <p class="footer-tagline">Your trusted marketplace for exclusive presale tickets to K-Pop, international, and live events worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Events</h4>
+        <ul class="footer-links">
+          <li><a href="event.html">BTS</a></li>
+          <li><a href="event-exo.html">EXO</a></li>
+          <li><a href="event-weeknd.html">The Weeknd</a></li>
+          <li><a href="#events">All Events</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <ul class="footer-links">
+          <li><a href="register.html">Sign Up</a></li>
+          <li><a href="login.html">Log In</a></li>
+          <li><a href="cart.html">My Orders</a></li>
+          <li><a href="cart.html">Cart</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul class="footer-links">
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#how">FAQ</a></li>
+          <li><a href="mailto:support@ticketshub.com">Contact Us</a></li>
+          <li><a href="#">Refund Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 TicketsHub. All rights reserved.</div>
+      <div class="footer-disclaimer">TicketsHub is an independent resale marketplace and is not affiliated with, endorsed by, or connected to any official artist, management, or ticketing entity.</div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Session-aware nav ──
+    const session = Auth.getSession();
+    const navActions = document.querySelector('.nav-actions');
+    const mobActions = document.querySelector('.mob-actions');
+
+    if (session) {
+      // Replace login/register buttons with user greeting + logout
+      navActions.innerHTML = `
+        <button class="cart-btn" aria-label="Shopping cart" onclick="window.location.href='cart.html'">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        ${session.role === 'admin' ? `<a href="admin.html" style="padding:0.45rem 1.1rem;border-radius:6px;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.4);color:#f59e0b;font-size:0.82rem;font-weight:700;text-decoration:none;">⚡ Admin</a>` : ''}
+        <span style="font-size:0.83rem;color:var(--gray-light);">Hi, <strong style="color:var(--purple-glow)">${session.name}</strong></span>
+        <button onclick="logout()" style="padding:0.45rem 1.1rem;border:1px solid var(--border);border-radius:6px;background:transparent;color:var(--gray-mid);font-size:0.82rem;cursor:pointer;font-family:'DM Sans',sans-serif;">Log Out</button>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      `;
+      mobActions.innerHTML = `
+        ${session.role === 'admin' ? `<a href="admin.html" style="color:var(--gold);font-weight:700;">⚡ Admin Dashboard</a>` : ''}
+        <button onclick="logout()" style="padding:0.45rem 1.1rem;border:1px solid var(--border);border-radius:6px;background:transparent;color:var(--gray-mid);font-size:0.85rem;cursor:pointer;font-family:'DM Sans',sans-serif;">Log Out</button>
+      `;
+    }
+
+    function logout() { Auth.logout(); }
+
+    // Cart count from localStorage
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('th_cart') || '[]');
+      const total = cart.reduce((sum, i) => sum + i.qty, 0);
+      document.querySelectorAll('#cartCount, .cart-count').forEach(el => el.textContent = total);
+    }
+    updateCartCount();
+
+    // ── Hamburger menu toggle ──
+    document.addEventListener('click', (e) => {
+      const btn = document.getElementById('hamburgerBtn');
+      const menu = document.getElementById('mobileMenu');
+      if (!btn || !menu) return;
+      if (btn.contains(e.target)) {
+        menu.classList.toggle('open');
+      } else if (!menu.contains(e.target)) {
+        menu.classList.remove('open');
+      }
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const href = a.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+      });
+    });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.event-card, .step-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

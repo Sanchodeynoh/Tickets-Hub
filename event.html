@@ -612,4 +612,301 @@
         BTS returns with their highly anticipated <strong>ARIRANG World Tour 2026</strong> — a monumental concert series celebrating their journey, their roots, and their ARMY. Featuring all seven members, this tour promises a spectacular blend of live performances, breathtaking stage productions, and unforgettable fan moments.<br/><br/>
         TicketsHub offers exclusive presale access before general availability. Secure your spot now — quantities are strictly limited and confirmed on a first-come, first-served basis. Once payment is verified, your ticket confirmation will be sent directly to your email.
         <br/><br/>
-        <em style="col
+        <em style="color:var(--gray-mid);font-size:0.82rem;">TicketsHub is an independent resale marketplace and is not affiliated with HYBE, Big Hit Music, or any official BTS entity.</em>
+      </p>
+
+      <!-- Ticket Categories -->
+      <div class="ticket-categories">
+        <div class="section-title-sm">Select Ticket Category</div>
+
+        <!-- VIP -->
+        <div class="ticket-tier vip selected" data-tier="VIP EXPERIENCE" data-price="380" onclick="selectTier(this)">
+          <div class="tier-radio"></div>
+          <div class="tier-top">
+            <div>
+              <div class="tier-name">💎 VIP EXPERIENCE</div>
+              <div class="tier-desc">Front-of-stage access, exclusive merch package, early entry, dedicated VIP lane & soundcheck viewing.</div>
+            </div>
+            <div class="tier-price-block">
+              <div class="tier-price">$380</div>
+              <div class="tier-price-label">per ticket</div>
+            </div>
+          </div>
+          <div class="tier-perks">
+            <span class="perk-chip">🎁 Merch Pack</span>
+            <span class="perk-chip">⚡ Early Entry</span>
+            <span class="perk-chip">🎤 Soundcheck</span>
+            <span class="perk-chip">📸 Photo Op</span>
+          </div>
+        </div>
+
+        <!-- Premium Floor -->
+        <div class="ticket-tier prem" data-tier="PREMIUM FLOOR" data-price="220" onclick="selectTier(this)">
+          <div class="tier-radio"></div>
+          <div class="tier-top">
+            <div>
+              <div class="tier-name">🌟 PREMIUM FLOOR</div>
+              <div class="tier-desc">Standing floor section, close proximity to the main stage and extended runway.</div>
+            </div>
+            <div class="tier-price-block">
+              <div class="tier-price">$220</div>
+              <div class="tier-price-label">per ticket</div>
+            </div>
+          </div>
+          <div class="tier-perks">
+            <span class="perk-chip">🏟️ Floor Standing</span>
+            <span class="perk-chip">🎵 Extended Runway</span>
+          </div>
+        </div>
+
+        <!-- Floor Standing -->
+        <div class="ticket-tier floor" data-tier="FLOOR STANDING" data-price="150" onclick="selectTier(this)">
+          <div class="tier-radio"></div>
+          <div class="tier-top">
+            <div>
+              <div class="tier-name">🎵 FLOOR STANDING</div>
+              <div class="tier-desc">General floor standing area. Great energy, great views from the heart of the crowd.</div>
+            </div>
+            <div class="tier-price-block">
+              <div class="tier-price">$150</div>
+              <div class="tier-price-label">per ticket</div>
+            </div>
+          </div>
+          <div class="tier-perks">
+            <span class="perk-chip">🏟️ Floor Access</span>
+            <span class="perk-chip">🎉 General Admission</span>
+          </div>
+        </div>
+
+        <!-- Seated -->
+        <div class="ticket-tier stand" data-tier="SEATED — LOWER BOWL" data-price="120" onclick="selectTier(this)">
+          <div class="tier-radio"></div>
+          <div class="tier-top">
+            <div>
+              <div class="tier-name">🪑 SEATED — LOWER BOWL</div>
+              <div class="tier-desc">Assigned seating in the lower bowl with excellent sightlines across the full stage setup.</div>
+            </div>
+            <div class="tier-price-block">
+              <div class="tier-price">$120</div>
+              <div class="tier-price-label">per ticket</div>
+            </div>
+          </div>
+          <div class="tier-perks">
+            <span class="perk-chip">💺 Assigned Seat</span>
+            <span class="perk-chip">👁️ Full Stage View</span>
+          </div>
+        </div>
+
+        <!-- Upper Bowl — Sold Out -->
+        <div class="ticket-tier sold-out" data-tier="UPPER BOWL" data-price="85" onclick="return;">
+          <div class="tier-top">
+            <div>
+              <div class="tier-name">🪑 UPPER BOWL <span class="sold-out-badge">Sold Out</span></div>
+              <div class="tier-desc">Upper level assigned seating.</div>
+            </div>
+            <div class="tier-price-block">
+              <div class="tier-price" style="color:var(--gray-mid);">$85</div>
+              <div class="tier-price-label">per ticket</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Venue -->
+      <div class="section-title-sm">Venue</div>
+      <div class="venue-box">
+        <div class="venue-map-placeholder">📍</div>
+        <div class="venue-info">
+          <div class="venue-name">Venue TBA — Multiple Cities</div>
+          <div class="venue-address">Exact venue details will be confirmed and sent with your ticket confirmation email.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: Order Box -->
+    <div class="right-col">
+      <div class="order-box">
+        <div class="order-box-title">Your Order</div>
+
+        <!-- Login prompt (shows if not logged in) -->
+        <div class="login-prompt" id="loginPrompt">
+          <a href="login.html">Log in</a> or <a href="register.html">sign up</a> to purchase tickets.
+        </div>
+
+        <!-- Selected tier display -->
+        <div class="selected-tier-display">
+          <div id="stdContent">
+            <div class="std-placeholder">← Select a ticket category</div>
+          </div>
+          <div class="std-price" id="stdPrice"></div>
+        </div>
+
+        <!-- Quantity -->
+        <div class="qty-label">Number of Tickets <span style="color:var(--gray-mid);font-weight:400;">(max 6)</span></div>
+        <div class="qty-row">
+          <button class="qty-btn" id="qtyMinus" onclick="changeQty(-1)">−</button>
+          <div class="qty-display" id="qtyDisplay">1</div>
+          <button class="qty-btn" id="qtyPlus" onclick="changeQty(1)">+</button>
+        </div>
+
+        <!-- Price Breakdown -->
+        <div class="price-breakdown">
+          <div class="price-row">
+            <span class="label">Ticket price</span>
+            <span class="value" id="unitPrice">—</span>
+          </div>
+          <div class="price-row">
+            <span class="label">Quantity</span>
+            <span class="value" id="qtyLine">1</span>
+          </div>
+          <div class="price-row">
+            <span class="label">Service fee</span>
+            <span class="value" id="serviceFee">—</span>
+          </div>
+          <div class="price-row total">
+            <span class="label">Total</span>
+            <span class="value" id="totalPrice">—</span>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <button class="btn-buy-now" id="buyNowBtn" onclick="handleBuyNow()" disabled>
+          ⚡ Buy Now
+        </button>
+        <button class="btn-add-cart" id="addCartBtn" onclick="handleAddToCart()" disabled>
+          🛒 Add to Cart
+        </button>
+
+        <div class="order-note">
+          <span>🔒</span>
+          <span>After checkout, scan the QR code to pay. We'll confirm your payment and send your ticket details by email.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast">
+    <span class="toast-icon" id="toastIcon"></span>
+    <span id="toastMsg"></span>
+  </div>
+
+  <script>
+    // ── State ──
+    let selectedTier  = { name: 'VIP EXPERIENCE', price: 380 };
+    let qty           = 1;
+    const SERVICE_FEE_PCT = 0.08; // 8%
+
+    // ── Session check ──
+    const session = Auth.getSession();
+    if (!session) {
+      document.getElementById('loginPrompt').style.display = 'block';
+    }
+
+    // ── Cart count ──
+    Cart.updateCount();
+
+    // ── Tier selection ──
+    function selectTier(el) {
+      if (el.classList.contains('sold-out')) return;
+      document.querySelectorAll('.ticket-tier:not(.sold-out)').forEach(t => t.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedTier = { name: el.dataset.tier, price: parseFloat(el.dataset.price) };
+      updateOrderBox();
+      document.getElementById('buyNowBtn').disabled = false;
+      document.getElementById('addCartBtn').disabled = false;
+    }
+
+    // ── Quantity ──
+    function changeQty(delta) {
+      qty = Math.min(6, Math.max(1, qty + delta));
+      document.getElementById('qtyDisplay').textContent = qty;
+      document.getElementById('qtyMinus').disabled = qty <= 1;
+      document.getElementById('qtyPlus').disabled  = qty >= 6;
+      updateOrderBox();
+    }
+
+    // ── Price calc ──
+    function updateOrderBox() {
+      const base    = selectedTier.price * qty;
+      const fee     = Math.round(base * SERVICE_FEE_PCT);
+      const total   = base + fee;
+
+      document.getElementById('stdContent').innerHTML = `<div class="std-name">${selectedTier.name}</div>`;
+      document.getElementById('stdPrice').textContent = `$${selectedTier.price}`;
+      document.getElementById('unitPrice').textContent = `$${selectedTier.price}`;
+      document.getElementById('qtyLine').textContent   = `× ${qty}`;
+      document.getElementById('serviceFee').textContent = `$${fee}`;
+      document.getElementById('totalPrice').textContent = `$${total}`;
+    }
+
+    // Initial render
+    updateOrderBox();
+    document.getElementById('qtyMinus').disabled = true;
+
+    // ── Add to Cart ──
+        function handleAddToCart() {
+      if (!session) { window.location.href = 'login.html'; return; }
+      Cart.add({ event: 'BTS ARIRANG WORLD TOUR 2026', artist: 'BTS', tier: selectedTier.name, price: selectedTier.price, qty: qty });
+      showToast('cart', 'cart', qty + ' x ' + selectedTier.name + ' added to cart!');
+    }
+
+      const cart = JSON.parse(localStorage.getItem('th_cart') || '[]');
+      const existing = cart.find(i => i.tier === selectedTier.name && i.event === 'BTS ARIRANG WORLD TOUR 2026');
+      if (existing) {
+        existing.qty = Math.min(6, existing.qty + qty);
+      } else {
+        cart.push({
+          event:    'BTS ARIRANG WORLD TOUR 2026',
+          artist:   'BTS',
+          tier:     selectedTier.name,
+          price:    selectedTier.price,
+          qty:      qty
+        });
+      }
+      localStorage.setItem('th_cart', JSON.stringify(cart));
+      updateCartCount();
+      showToast('cart', '🛒', `${qty} × ${selectedTier.name} added to cart!`);
+    }
+
+    // ── Buy Now ──
+        function handleBuyNow() {
+      if (!session) { window.location.href = 'login.html'; return; }
+      Cart.add({ event: 'BTS ARIRANG WORLD TOUR 2026', artist: 'BTS', tier: selectedTier.name, price: selectedTier.price, qty: qty });
+      window.location.href = 'cart.html';
+    }
+
+      // Save "buy now" item to sessionStorage and go straight to cart
+      const item = {
+        event:  'BTS ARIRANG WORLD TOUR 2026',
+        artist: 'BTS',
+        tier:   selectedTier.name,
+        price:  selectedTier.price,
+        qty:    qty
+      };
+      sessionStorage.setItem('th_buynow', JSON.stringify(item));
+
+      // Also push to cart
+      const cart = JSON.parse(localStorage.getItem('th_cart') || '[]');
+      const existing = cart.find(i => i.tier === selectedTier.name && i.event === item.event);
+      if (existing) { existing.qty = Math.min(6, existing.qty + qty); }
+      else cart.push(item);
+      localStorage.setItem('th_cart', JSON.stringify(cart));
+
+      window.location.href = 'cart.html';
+    }
+
+    // ── Toast ──
+    function showToast(type, icon, msg) {
+      const t = document.getElementById('toast');
+      document.getElementById('toastIcon').textContent = icon;
+      document.getElementById('toastMsg').textContent  = msg;
+      t.className = `toast ${type} show`;
+      setTimeout(() => t.classList.remove('show'), 3000);
+    }
+  </script>
+</body>
+</html>
