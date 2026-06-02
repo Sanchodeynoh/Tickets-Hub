@@ -1,0 +1,50 @@
+async function handleLogin() {
+  var email = document.getElementById('email').value.trim();
+  var password = document.getElementById('password').value;
+  var errBox = document.getElementById('globalError');
+  errBox.classList.remove('show');
+
+  var valid = true;
+  if (!email) {
+    document.getElementById('emailErr').classList.add('show');
+    document.getElementById('email').classList.add('error');
+    valid = false;
+  } else {
+    document.getElementById('emailErr').classList.remove('show');
+    document.getElementById('email').classList.remove('error');
+  }
+  if (!password) {
+    document.getElementById('passwordErr').classList.add('show');
+    document.getElementById('password').classList.add('error');
+    valid = false;
+  } else {
+    document.getElementById('passwordErr').classList.remove('show');
+    document.getElementById('password').classList.remove('error');
+  }
+  if (!valid) return;
+
+  document.getElementById('btnText').textContent = 'Logging in...';
+  document.getElementById('spinner').style.display = 'block';
+  document.getElementById('loginBtn').disabled = true;
+
+  try {
+    var data = await Auth.login(email, password);
+
+    // SAVE ADMIN DATA FOR GREETING
+    localStorage.setItem('adminToken', data.token);
+    localStorage.setItem('adminName', data.user.name || 'Sancho'); // Backend must return name
+    localStorage.setItem('adminEmail', data.user.email);
+
+    if (data.user.role === 'admin') {
+      window.location.href = 'admin.html';
+    } else {
+      window.location.href = 'index.html';
+    }
+  } catch (err) {
+    errBox.textContent = err.message || 'Incorrect email or password.';
+    errBox.classList.add('show');
+    document.getElementById('btnText').textContent = 'Log In';
+    document.getElementById('spinner').style.display = 'none';
+    document.getElementById('loginBtn').disabled = false;
+  }
+}
